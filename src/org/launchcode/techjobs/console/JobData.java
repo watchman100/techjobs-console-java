@@ -21,6 +21,20 @@ public class JobData {
 
     private static ArrayList<HashMap<String, String>> allJobs;
 
+    public static ArrayList<HashMap<String, String>> findByValue(String searchTerm){
+        ArrayList<HashMap<String, String>> searchList = new ArrayList<>();
+        for (HashMap<String, String> job: allJobs){
+            for(String whatever : job.values()){
+                if(whatever.toUpperCase().contains(searchTerm.toUpperCase())) {
+                    searchList.add(job);
+                    break;
+                }
+
+            }
+        }
+        return searchList;
+    }
+
     /**
      * Fetch list of all values from loaded data,
      * without duplicates, for a given column.
